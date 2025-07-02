@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Mikail Ardyas Wibowo</title>
+    <style>
+        :root {
+            --primary: #2c3e50; /* Dark blue-gray */
+            --secondary: #f8f9fa; /* Light neutral */
+            --accent: #3498db; /* Blue accent */
+            --neutral: #ffffff; /* White */
+            --dark-neutral: #2c3e50; /* Dark text */
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: var(--light-text);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            font-weight: 600;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: var(--light-text);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--neutral);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn {
+            animation: pulse 2s infinite;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 235, 59, 0.4);
+            animation: none;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            color: var(--dark-neutral);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(75, 0, 130, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-info p {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--accent);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: white;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            color: var(--text-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+        <div class="particles"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">&lt;Portfolio&gt;</div>
+                <div class="nav-links">
+                    <a href="#about">Tentang Saya</a>
+                    <a href="#skills">Keterampilan</a>
+                    <a href="#projects">Proyek</a>
+                    <a href="#education">Pendidikan</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hai, Saya <span style="color: white;">Mikail Ardyas Wibowo</span></h1>
+                <p>Saya adalah mahasiswa S1 Informatika di Telkom University dengan minat dalam analisis data, visualisasi, dan desain UI/UX. Saya juga tertarik dengan kecerdasan buatan dan berdedikasi untuk mengikuti perkembangan teknologi.</p>
+                <div class="hero-buttons" style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+                    <a href="#projects" class="btn">Lihat Proyek Saya</a>
+                    <a href="mailto:mikailardyas500@gmail.com" class="btn" style="background: white; color: var(--primary); border: 2px solid var(--accent);">Hubungi Saya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/fotosut_mika2.JPG" alt="Foto profile Mikail Ardyas Wibowo" />
+                </div>
+                <div class="about-text">
+                    <h3>Profil</h3>
+                    <p>Saya adalah mahasiswa S1 Informatika yang berkomitmen untuk mengembangkan keterampilan dalam analisis data dan desain antarmuka pengguna. Saya percaya bahwa teknologi dapat memberikan solusi inovatif untuk berbagai tantangan yang dihadapi masyarakat saat ini.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Keterampilan Teknis</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i>💻</i>
+                    <h3>Algoritma</h3>
+                    <p>HTML, CSS, JavaScript, Python, Golang, C++, Flutter, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <i>📊</i>
+                    <h3>Analisis Data</h3>
+                    <p>Pandas, NumPy, Matplotlib</p>
+                </div>
+                <div class="skill-card">
+                    <i>🎨</i>
+                    <h3>Desain UI/UX</h3>
+                    <p>Figma</p>
+                </div>
+                <div class="skill-card">
+                    <i>🔧</i>
+                    <h3>Tools</h3>
+                    <p>VS Code, Android Studio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="non-technical-skills" class="non-technical-skills">
+        <div class="container">
+            <h2 class="section-title">Keterampilan Non-Teknis</h2>
+            <ul>
+                <li>Komunikasi</li>
+                <li>Kolaborasi dalam Tim</li>
+                <li>Manajemen Waktu</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Proyek Terkini</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>UI/UX Designer untuk Web KitchenSync</h3>
+                        <p>Web untuk berbagi resep makanan dan memungkinkan pengguna untuk memesan bahan-bahan resep.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>UI/UX dan Frontend untuk Aplikasi Review Film FLICKFAVE</h3>
+                        <p>Web untuk merating dan mereview film, mirip dengan Letterboxd.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>UI/UX Designer untuk Web SymbioSix</h3>
+                        <p>Web untuk mengupgrade diri dengan tugas-tugas dan aktivitas yang lebih baik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Riwayat Pendidikan</h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2011 - 2016</div>
+                        <h3>SD Al-Hanief Bekasi</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017 - 2019</div>
+                        <h3>SMP Al-Azhar 9 Bekasi</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2022</div>
+                        <h3>SMA Al-Azhar 4 Bekasi</h3>
+                        <p>Jurusan: Ilmu Pengetahuan Alam</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Sekarang</div>
+                        <h3>Telkom University</h3>
+                        <p>S1 Informatika</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/mikardyy" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/mikailardyas" target="_blank">LinkedIn</a>
+                <a href="https://instagram.com/mikardyy" target="_blank">Instagram</a>
+                <a href="mailto:mikailardyas500@gmail.com" target="_blank">Email</a>
+            </div>
+            <p>© 2025 Portfolio Mikail Ardyas Wibowo</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
